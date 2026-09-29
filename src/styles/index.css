@@ -1,0 +1,377 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — mirrored in src/config/theme.ts for the WebGL layer.
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-ivory: #f7f1e6;
+  --color-champagne: #e9d9bc;
+  --color-beige: #d8c3a0;
+  --color-gold: #b8955a;
+  --color-gold-light: #d9bc82;
+  --color-gold-deep: #8c6a3a;
+  --color-brown: #3a2a1e;
+  --color-brown-deep: #1e1610;
+  --color-ink: #0c0907;
+
+  --font-display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --tracking-eyebrow: 0.42em;
+  --tracking-button: 0.32em;
+
+  --ease-cinematic: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    background: var(--color-ink);
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html.is-locked,
+  html.is-locked body {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    font-family: var(--font-sans);
+    color: var(--color-brown);
+    background: var(--color-ink);
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-gold) 40%, transparent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-gold-light);
+    outline-offset: 6px;
+  }
+}
+
+@layer components {
+  /* Small tracked uppercase line: "THE WEDDING OF", "WE ARE GETTING MARRIED" */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    /* compensate trailing tracking so text stays optically centred */
+    margin-right: calc(var(--tracking-eyebrow) * -1);
+  }
+  @media (min-width: 768px) {
+    .eyebrow {
+      font-size: 0.75rem;
+    }
+  }
+
+  /* The couple's names — the typographic hero of the whole experience */
+  .display-names {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+  }
+
+  .hairline {
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, currentColor 30%, currentColor 70%, transparent);
+  }
+
+  /* Ghost button with gold hairline + fill on hover */
+  .btn-invite {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    min-height: 3.25rem;
+    padding: 0 2.1rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--color-gold-light) 70%, transparent);
+    color: var(--color-ivory);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: var(--tracking-button);
+    text-transform: uppercase;
+    background: color-mix(in srgb, var(--color-ink) 35%, transparent);
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      color 0.45s var(--ease-out-soft),
+      border-color 0.45s var(--ease-out-soft),
+      transform 0.45s var(--ease-out-soft);
+  }
+  .btn-invite::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(120deg, var(--color-gold-deep), var(--color-gold-light) 55%, var(--color-gold));
+    transform: translateY(101%);
+    transition: transform 0.6s var(--ease-cinematic);
+  }
+  .btn-invite:hover:not(:disabled),
+  .btn-invite:focus-visible {
+    color: var(--color-ink);
+    border-color: var(--color-gold-light);
+  }
+  .btn-invite:hover:not(:disabled)::before,
+  .btn-invite:focus-visible::before {
+    transform: translateY(0);
+  }
+  .btn-invite:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  .btn-invite:disabled {
+    opacity: 0.5;
+    cursor: progress;
+  }
+}
+
+@layer components {
+  /* Stationery panel: translucent ivory card with a jeweller's double hairline */
+  .paper {
+    position: relative;
+    background: color-mix(in srgb, var(--color-ivory) 88%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-gold) 38%, transparent);
+    box-shadow: 0 40px 90px -50px rgba(58, 42, 30, 0.55);
+  }
+  .paper::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid color-mix(in srgb, var(--color-gold) 20%, transparent);
+    pointer-events: none;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1;
+    font-size: clamp(2.6rem, 11vw, 3.6rem);
+  }
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: clamp(3.6rem, 5.5vw, 5rem);
+    }
+  }
+
+  /* Buttons for light scenes */
+  .btn-solid,
+  .btn-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 2.9rem;
+    padding: 0 1.6rem;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.6875rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    transition:
+      background-color 0.45s var(--ease-out-soft),
+      color 0.45s var(--ease-out-soft),
+      border-color 0.45s var(--ease-out-soft),
+      transform 0.3s var(--ease-out-soft);
+  }
+  .btn-solid {
+    background: var(--color-brown-deep);
+    color: var(--color-ivory);
+    border: 1px solid var(--color-brown-deep);
+  }
+  .btn-solid:hover:not(:disabled) {
+    background: var(--color-gold-deep);
+    border-color: var(--color-gold-deep);
+  }
+  .btn-line {
+    color: var(--color-brown);
+    border: 1px solid color-mix(in srgb, var(--color-gold-deep) 55%, transparent);
+    background: transparent;
+  }
+  .btn-line:hover:not(:disabled) {
+    border-color: var(--color-brown);
+    background: color-mix(in srgb, var(--color-brown) 6%, transparent);
+  }
+  .btn-solid:active:not(:disabled),
+  .btn-line:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  .btn-solid:disabled,
+  .btn-line:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Form fields: underline style, like writing on a card */
+  .field-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-brown) 75%, transparent);
+  }
+  .field-input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-gold-deep) 45%, transparent);
+    padding: 0.7rem 0 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--color-brown-deep);
+    border-radius: 0;
+    transition: border-color 0.3s var(--ease-out-soft);
+  }
+  .field-input::placeholder {
+    color: color-mix(in srgb, var(--color-brown) 40%, transparent);
+    font-style: italic;
+  }
+  .field-input:focus {
+    outline: none;
+    border-bottom-color: var(--color-brown-deep);
+  }
+  textarea.field-input {
+    resize: vertical;
+    min-height: 6.5rem;
+    line-height: 1.4;
+  }
+
+  .year-outline {
+    font-family: var(--font-display);
+    font-weight: 300;
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--color-gold-deep) 70%, transparent);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .scene-min-h {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  .safe-bottom {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Loader shimmer on the monogram hairline */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Scroll hint: a drop of light travelling down a hairline */
+@keyframes scroll-drop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(220%);
+    opacity: 0;
+  }
+}
+
+@keyframes tick {
+  from {
+    opacity: 0.35;
+    transform: translateY(-0.18em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes draw-stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes music-bar {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* CSS fallback when WebGL is unavailable */
+@keyframes float-dust {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(12px, -120px, 0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Light scenes need a dark focus ring */
+main :focus-visible {
+  outline-color: var(--color-brown-deep);
+}
+
+/* Soft ivory veil behind content scenes: keeps text legible over dark pines
+   while the 3D world still reads through. Static — costs nothing per frame. */
+.scene-veil {
+  background: linear-gradient(
+    180deg,
+    rgba(247, 241, 230, 0) 0%,
+    rgba(247, 241, 230, 0.5) 12%,
+    rgba(247, 241, 230, 0.5) 88%,
+    rgba(247, 241, 230, 0) 100%
+  );
+}
