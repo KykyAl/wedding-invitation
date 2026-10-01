@@ -46,7 +46,7 @@ function LazyMap({ src, title }: { src: string; title: string }) {
   );
 }
 
-/** Scene 07 — the venue: Ranca Upas, with the aerial lake view in the 3D world behind. */
+/** Scene 07 — the venue, with the aerial lake view in the 3D world behind. */
 export function VenueSection({ reducedMotion }: VenueSectionProps) {
   const section = useRef<HTMLElement>(null);
   const { venue } = weddingData;

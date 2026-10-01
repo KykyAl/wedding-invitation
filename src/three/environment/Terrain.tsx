@@ -44,7 +44,7 @@ interface RidgeProps {
 }
 
 /**
- * Distant mountain silhouette (Ciwidey highlands). Unfogged so it survives the fog far plane;
+ * Distant mountain silhouette. Unfogged so it survives the fog far plane;
  * the colour is pre-mixed toward the horizon to fake aerial perspective.
  */
 function Ridge({ z, baseHeight, amplitude, color, seed }: RidgeProps) {

@@ -219,15 +219,35 @@ export function createCardTexture(content: CardContent) {
   ctx.font = '500 28px "DM Sans", system-ui, sans-serif';
   drawTracked(ctx, content.eyebrow.toUpperCase(), w / 2, 200, 12);
 
-  // Names side by side with a golden ampersand between.
-  ctx.textAlign = "center";
+  // Names side by side with a golden ampersand between — measured, so any pair of
+  // names sits evenly, shrinking to fit when they are long.
+  const nameFont = (px: number) => `italic 400 ${px}px "Cormorant Garamond", Georgia, serif`;
+  const maxLine = w - 260;
+  let size = 200;
+  const measure = (px: number) => {
+    ctx.font = nameFont(px);
+    const a = ctx.measureText(content.first).width;
+    const b = ctx.measureText(content.second).width;
+    ctx.font = nameFont(px * 0.75);
+    const amp = ctx.measureText("&").width;
+    const gap = px * 0.28;
+    return { a, b, amp, gap, total: a + b + amp + gap * 2 };
+  };
+  let m = measure(size);
+  while (m.total > maxLine && size > 90) m = measure((size -= 8));
+  let x = (w - m.total) / 2;
+  ctx.textAlign = "left";
   ctx.fillStyle = palette.brown;
-  ctx.font = 'italic 400 200px "Cormorant Garamond", Georgia, serif';
-  ctx.fillText(content.first, w / 2 - 330, 500);
-  ctx.fillText(content.second, w / 2 + 330, 500);
+  ctx.font = nameFont(size);
+  ctx.fillText(content.first, x, 500);
+  x += m.a + m.gap;
   ctx.fillStyle = gold;
-  ctx.font = 'italic 400 150px "Cormorant Garamond", Georgia, serif';
-  ctx.fillText("&", w / 2, 490);
+  ctx.font = nameFont(size * 0.75);
+  ctx.fillText("&", x, 490);
+  x += m.amp + m.gap;
+  ctx.fillStyle = palette.brown;
+  ctx.font = nameFont(size);
+  ctx.fillText(content.second, x, 500);
 
   // Divider
   ctx.strokeStyle = gold;

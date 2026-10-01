@@ -39,7 +39,7 @@ const defaultBase = () => new URL(import.meta.env.BASE_URL, window.location.orig
  */
 export function ShareTool() {
   const { groom, bride } = weddingData;
-  const [guestText, setGuestText] = usePersistent(STORE.guests, "Andi Pratama - 0812 3456 7890\nKeluarga Bapak Budi\nSarah");
+  const [guestText, setGuestText] = usePersistent(STORE.guests, "Nama Tamu 1 - 0812 0000 0001\nNama Tamu 2 - 0812 0000 0002\nNama Tamu 3");
   const [template, setTemplate] = usePersistent(STORE.template, weddingData.share.message);
   const [base, setBase] = usePersistent(STORE.base, defaultBase());
   const [sent, setSent] = usePersistent<Record<string, boolean>>(STORE.sent, {});
@@ -99,7 +99,7 @@ export function ShareTool() {
             <p className="mt-2 text-xs leading-relaxed text-brown/70">
               Satu tamu per baris. Tambahkan nomor setelah tanda “-” agar chat langsung terbuka, contoh:
               <br />
-              <code className="text-brown-deep">Andi Pratama - 0812 3456 7890</code>
+              <code className="text-brown-deep">Nama Tamu - 0812 0000 0001</code>
             </p>
             <textarea
               value={guestText}

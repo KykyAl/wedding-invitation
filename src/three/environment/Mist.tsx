@@ -15,7 +15,7 @@ interface Layer {
   opacity: number;
 }
 
-/** Slow-drifting mist bands between the trees — the highland morning fog of Ciwidey. */
+/** Slow-drifting mist bands between the trees — highland morning fog. */
 export function Mist() {
   const layers = useMemo<Layer[]>(() => {
     const rand = createRandom(99);

@@ -53,7 +53,7 @@ export const ARCH_POSITION: Vec3 = [0, 0, 0];
 /** Interlocked rings floating over the aisle in the events scene. */
 export const RINGS_POSITION: Vec3 = [3.6, 4.8, -51];
 
-/** Ranca Upas lake — seen from above in the venue scene. */
+/** Lake — seen from above in the venue scene. */
 export const LAKE = { center: [0, 0, -84] as Vec3, radius: 11 } as const;
 
 /** Golden location pin, offset from the lake centre so it sits beside (not behind) the venue title. */

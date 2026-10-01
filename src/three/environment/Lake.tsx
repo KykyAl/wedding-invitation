@@ -5,7 +5,7 @@ import { LAKE, PIN_OFFSET } from "../../config/scenes";
 import { palette } from "../../config/theme";
 
 /**
- * Ranca Upas lake with a golden location pin — from the venue camera's aerial angle it
+ * A lake with a golden location pin — from the venue camera's aerial angle it
  * reads like a living map. Water is a glossy disc lit by the procedural environment.
  */
 export function Lake() {

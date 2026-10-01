@@ -15,7 +15,7 @@ export function normalizePhone(raw: string): string {
 }
 
 /**
- * One guest per line: "Andi Pratama" or "Andi Pratama - 0812 3456 7890"
+ * One guest per line: "Nama Tamu" or "Nama Tamu - 0812 0000 0001"
  * (separator may also be "," ";" or a tab). Blank lines and duplicates are skipped.
  */
 export function parseGuests(text: string): Guest[] {

@@ -50,7 +50,7 @@ function createPineGeometry() {
 }
 
 /**
- * The pine forest of Ranca Upas — a single instanced draw call.
+ * The pine forest — a single instanced draw call.
  * Trees line both sides of the aisle; fog turns distant rows into layered silhouettes.
  */
 export function PineForest() {

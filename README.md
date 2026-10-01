@@ -1,10 +1,10 @@
-# Tony & Aulia — Cinematic 3D Wedding Invitation
+# Cinematic 3D Wedding Invitation — Template
 
 React 19 · TypeScript · Vite 8 · Three.js (React Three Fiber + drei) · GSAP ScrollTrigger · Tailwind CSS 4
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173/?to=Andi
+npm run dev        # http://localhost:5173/?to=Nama+Tamu
 npm run build      # type-check + production build
 npm run lint
 ```
@@ -40,7 +40,8 @@ displayed date and the countdown), events (`start`/`end` feed the calendar links
 story, gallery, gift accounts & delivery address, RSVP settings, seed wishes, closing text, music and page meta.
 Components never hardcode wedding data — `<title>` and Open Graph tags are injected from it at build time too.
 
-> ⚠️ Parents' names, bank/e-wallet numbers, phone and gift address are **sample values** — replace them before sharing.
+> ⚠️ This is a **template**: names, parents, dates, venue, bank/e-wallet numbers, phone, addresses and wishes are
+> all **example values** — replace them in `src/data/wedding.ts` before sharing.
 
 For WhatsApp previews the `og:image` must be an absolute URL: `SITE_URL=https://your-domain npm run build`.
 
@@ -108,9 +109,12 @@ it as `rsvpService` — no UI changes needed. Today submissions are stored per d
 
 Footer credit: `weddingData.credits`.
 
+After filling in the real names, refresh the WhatsApp preview image (needs Python + Pillow):
+`python3 scripts/generate-placeholders.py --og-only --groom "Nama" --bride "Nama" --date "12 · 06 · 2027" --venue "Nama Venue"`
+
 Placeholder images (labelled "placeholder") ship so everything works; replace them with real photos, same file names:
 
 - `public/assets/couple/groom.webp`, `bride.webp` — portraits, 3:4.
-- `public/assets/gallery/Tony-aulia-01…06.webp` — prewedding photos (shown 4:5, full-frame in the lightbox).
+- `public/assets/gallery/gallery-01…06.webp` — prewedding photos (shown 4:5, full-frame in the lightbox).
 - `public/assets/og/wedding-preview.jpg` — 1200×630 WhatsApp/social preview.
 - `public/assets/music/wedding-cinematic.mp3` — background music (the ♪ button hides itself while the file is missing).

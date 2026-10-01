@@ -2,33 +2,34 @@
  * Single source of truth for the invitation content.
  * Swap couple, date, venue or media here — components never hardcode wedding data.
  *
- * NOTE: parents, bank accounts, phone numbers and the gift address below are
- * SAMPLE values — replace them with the real ones before sharing the link.
+ * TEMPLATE: every value below is an EXAMPLE placeholder ("Nama …", "Jl. Contoh …",
+ * "1234567890"). Replace them with the real details before sharing the link.
  */
 export const weddingData = {
   groom: {
-    nickname: "Tony",
-    fullName: "Tony Al Fatahhillah",
+    /** Short name — shown large on the cover, card, hero and closing. Keep it short. */
+    nickname: "Pria",
+    fullName: "Nama Lengkap Pengantin Pria",
     order: "Putra pertama dari",
-    parents: "Bapak Ahmad Fauzi & Ibu Siti Aminah",
-    instagram: "tony.alfatahhillah",
+    parents: "Bapak Nama Ayah & Ibu Nama Ibu",
+    instagram: "username_pria",
     photo: "/assets/couple/groom.webp",
   },
 
   bride: {
-    nickname: "Aulia",
-    fullName: "Aulia Rahma",
+    nickname: "Wanita",
+    fullName: "Nama Lengkap Pengantin Wanita",
     order: "Putri kedua dari",
-    parents: "Bapak Hendra Wijaya & Ibu Dewi Lestari",
-    instagram: "aulia.rahma",
+    parents: "Bapak Nama Ayah & Ibu Nama Ibu",
+    instagram: "username_wanita",
     photo: "/assets/couple/bride.webp",
   },
 
-  date: "11 November 2026",
+  date: "12 Juni 2027",
   /** Machine-readable start of the first event (used by countdown & <time>). */
-  dateTime: "2026-11-11T08:00:00+07:00",
+  dateTime: "2027-06-12T08:00:00+07:00",
 
-  hashtag: "#TonyAuliaForever",
+  hashtag: "#HashtagPernikahan",
 
   quote: {
     text: "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri.",
@@ -38,23 +39,23 @@ export const weddingData = {
   events: [
     {
       type: "Akad Nikah",
-      date: "11 November 2026",
-      day: "Rabu",
+      date: "12 Juni 2027",
+      day: "Sabtu",
       time: "08:00 WIB",
-      venue: "Ranca Upas",
-      address: "Jl. Raya Ciwidey – Patengan, Kabupaten Bandung, Jawa Barat",
-      start: "2026-11-11T08:00:00+07:00",
-      end: "2026-11-11T10:00:00+07:00",
+      venue: "Nama Venue",
+      address: "Jl. Contoh No. 123, Kecamatan Contoh, Kota Contoh, Provinsi",
+      start: "2027-06-12T08:00:00+07:00",
+      end: "2027-06-12T10:00:00+07:00",
     },
     {
-      type: "Reception",
-      date: "11 November 2026",
-      day: "Rabu",
+      type: "Resepsi",
+      date: "12 Juni 2027",
+      day: "Sabtu",
       time: "11:00 WIB",
-      venue: "Ranca Upas",
-      address: "Jl. Raya Ciwidey – Patengan, Kabupaten Bandung, Jawa Barat",
-      start: "2026-11-11T11:00:00+07:00",
-      end: "2026-11-11T14:00:00+07:00",
+      venue: "Nama Venue",
+      address: "Jl. Contoh No. 123, Kecamatan Contoh, Kota Contoh, Provinsi",
+      start: "2027-06-12T11:00:00+07:00",
+      end: "2027-06-12T14:00:00+07:00",
     },
   ],
 
@@ -65,14 +66,15 @@ export const weddingData = {
   },
 
   venue: {
-    name: "Ranca Upas",
-    address: "Jl. Raya Ciwidey – Patengan, Kabupaten Bandung, Jawa Barat",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ranca+Upas+Bandung",
-    embedUrl: "https://www.google.com/maps?q=Ranca+Upas+Ciwidey+Bandung&output=embed",
+    name: "Nama Venue",
+    address: "Jl. Contoh No. 123, Kecamatan Contoh, Kota Contoh, Provinsi",
+    /** Replace the query with the venue name, or paste the venue's Google Maps share link. */
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Indonesia",
+    embedUrl: "https://www.google.com/maps?q=Indonesia&output=embed",
     notes: [
-      "Ranca Upas berada di ketinggian ±1.700 mdpl — udara pagi cukup dingin, bawalah jaket.",
-      "Area parkir tersedia di pintu masuk utama kawasan wisata.",
-      "Perjalanan ±1,5–2 jam dari pusat Kota Bandung via Soreang – Ciwidey.",
+      "Contoh catatan: informasi cuaca atau pakaian yang disarankan.",
+      "Contoh catatan: lokasi area parkir untuk tamu.",
+      "Contoh catatan: estimasi waktu perjalanan dari pusat kota.",
     ],
   },
 
@@ -80,67 +82,67 @@ export const weddingData = {
     {
       year: "2019",
       title: "We Met",
-      description: "Sebuah pertemuan sederhana menjadi awal dari perjalanan yang tidak pernah kami bayangkan.",
+      description: "Contoh cerita: tuliskan bagaimana kalian pertama kali bertemu.",
     },
     {
       year: "2021",
       title: "Our First Journey",
-      description: "Kami mulai mengenal satu sama lain dan melewati banyak cerita bersama.",
+      description: "Contoh cerita: momen penting saat kalian mulai saling mengenal.",
     },
     {
       year: "2024",
       title: "We Decided Forever",
-      description: "Kami menyadari bahwa perjalanan ini ingin kami lanjutkan bersama selamanya.",
+      description: "Contoh cerita: kisah lamaran atau saat memutuskan untuk melangkah bersama.",
     },
     {
-      year: "2026",
+      year: "2027",
       title: "The Beginning of Our Forever",
       description: "Hari di mana dua perjalanan menjadi satu cerita.",
     },
   ],
 
   gallery: [
-    "/assets/gallery/Tony-aulia-01.webp",
-    "/assets/gallery/Tony-aulia-02.webp",
-    "/assets/gallery/Tony-aulia-03.webp",
-    "/assets/gallery/Tony-aulia-04.webp",
-    "/assets/gallery/Tony-aulia-05.webp",
-    "/assets/gallery/Tony-aulia-06.webp",
+    "/assets/gallery/gallery-01.webp",
+    "/assets/gallery/gallery-02.webp",
+    "/assets/gallery/gallery-03.webp",
+    "/assets/gallery/gallery-04.webp",
+    "/assets/gallery/gallery-05.webp",
+    "/assets/gallery/gallery-06.webp",
   ],
 
   gift: {
     intro:
       "Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih, kami menyediakan amplop digital dan alamat pengiriman kado.",
     accounts: [
-      { bank: "BCA", number: "1234567890", holder: "Tony Al Fatahhillah" },
-      { bank: "Mandiri", number: "1370012345678", holder: "Aulia Rahma" },
-      { bank: "GoPay", number: "081234567890", holder: "Aulia Rahma" },
+      { bank: "Nama Bank", number: "1234567890", holder: "Nama Pemilik Rekening" },
+      { bank: "Nama Bank", number: "0987654321", holder: "Nama Pemilik Rekening" },
+      { bank: "E-Wallet", number: "081200000000", holder: "Nama Pemilik Akun" },
     ],
     address: {
-      recipient: "Aulia Rahma",
-      phone: "081234567890",
-      full: "Jl. Cihampelas No. 123, Kel. Cipaganti, Kec. Coblong, Kota Bandung, Jawa Barat 40131",
+      recipient: "Nama Penerima",
+      phone: "081200000000",
+      full: "Jl. Contoh No. 45, Kelurahan Contoh, Kecamatan Contoh, Kota Contoh, Provinsi 12345",
     },
   },
 
   rsvp: {
-    deadline: "1 November 2026",
+    deadline: "1 Juni 2027",
     maxGuests: 4,
-    defaultName: "Andi Pratama",
+    defaultName: "Nama Tamu",
   },
 
   /** Shown in the wishes wall before guests add their own. */
   wishes: [
-    { name: "Rina & Dimas", attendance: "attend", message: "Selamat menempuh hidup baru! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah." },
-    { name: "Keluarga Pak Budi", attendance: "attend", message: "Barakallahu lakuma wa baraka alaikuma wa jama'a bainakuma fii khair." },
-    { name: "Sarah", attendance: "absent", message: "Maaf belum bisa hadir, doa terbaik untuk kalian berdua. Bahagia selalu!" },
+    { name: "Contoh Tamu 1", attendance: "attend", message: "Contoh ucapan: selamat menempuh hidup baru, semoga menjadi keluarga yang sakinah, mawaddah, warahmah." },
+    { name: "Contoh Tamu 2", attendance: "attend", message: "Contoh ucapan: barakallahu lakuma wa baraka alaikuma wa jama'a bainakuma fii khair." },
+    { name: "Contoh Tamu 3", attendance: "absent", message: "Contoh ucapan: mohon maaf belum bisa hadir, doa terbaik untuk kalian berdua." },
   ],
 
   closing: {
     message:
       "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.",
     signature: "Kami yang berbahagia",
-    families: "Keluarga Besar Bapak Ahmad Fauzi & Keluarga Besar Bapak Hendra Wijaya",
+    families: "Keluarga Besar Bapak Nama Ayah Pria & Keluarga Besar Bapak Nama Ayah Wanita",
   },
 
   music: {
@@ -150,9 +152,9 @@ export const weddingData = {
 
   /** Shown in the footer of the closing scene. */
   credits: {
-    label: "Undangan digital oleh",
-    name: "KykyAl",
-    url: "https://github.com/KykyAl",
+    label: "di buat oleh",
+    name: "KY",
+    url: "https://www.instagram.com/kikyalfatahhillah?stkn=cmJwZjN2ZzZncXcw",
   },
 
   /**
@@ -186,7 +188,7 @@ Kami yang berbahagia,
     ogImage: "/assets/og/wedding-preview.jpg",
   },
 
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ranca+Upas+Bandung",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Indonesia",
 };
 
 export type WeddingData = typeof weddingData;
