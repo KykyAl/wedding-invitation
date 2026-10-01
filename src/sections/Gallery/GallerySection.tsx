@@ -3,6 +3,7 @@ import { SectionHeading } from "../../components/ui/SectionHeading";
 import { weddingData } from "../../data/wedding";
 import { useReveal } from "../../hooks/useReveal";
 import { Lightbox } from "./Lightbox";
+import { asset } from "../../utils/asset";
 
 interface GallerySectionProps {
   reducedMotion: boolean;
@@ -152,7 +153,7 @@ export function GallerySection({ reducedMotion }: GallerySectionProps) {
                 aria-label={`Buka foto ${i + 1} dari ${photos.length}`}
               >
                 <img
-                  src={src}
+                  src={asset(src)}
                   alt={`Momen ${weddingData.groom.nickname} & ${weddingData.bride.nickname}, foto ${i + 1}`}
                   loading="lazy"
                   decoding="async"

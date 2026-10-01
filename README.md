@@ -9,6 +9,30 @@ npm run build      # type-check + production build
 npm run lint
 ```
 
+## Deploy (GitHub Pages)
+
+Every push to `main` builds and publishes via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+
+One-time setup on GitHub:
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
+2. *(When the Go backend is online)* **Settings → Secrets and variables → Actions → Variables → New variable**
+   `API_URL` = `https://api.your-domain.com` (https, without `/api/v1`). Without it, RSVPs use per-device localStorage.
+   Add the Pages origin (`https://kykyal.github.io`) to the backend's `ALLOWED_ORIGINS`.
+3. Push → the site appears at `https://kykyal.github.io/wedding-invitation/`.
+
+`SITE_URL` and `BASE_PATH` are filled automatically by `actions/configure-pages`, including for a custom
+domain (Settings → Pages → Custom domain). Building elsewhere (Vercel, Netlify, own server at the domain root):
+`SITE_URL=https://your-domain npm run build` and upload `dist/`.
+
+## Sending via WhatsApp
+
+Open **`<site>/share.html`** (unlisted, `noindex`; the data stays in your browser):
+paste guests one per line (`Nama - 0812…` to open the chat directly), adjust the message
+(`{nama} {link} {mempelai} {tanggal} {lokasi}`), then tap **Kirim WA** per guest. Each link carries `?to=Nama`,
+so the cover greets the guest by name. The default message lives in `weddingData.share.message`.
+
+WhatsApp caches link previews: if you change the OG image after sharing, test with a new link (e.g. add `&v=2`).
+
 ## Customising the invitation
 
 All content lives in [`src/data/wedding.ts`](src/data/wedding.ts) — couple & parents, date (`dateTime` drives every
@@ -81,6 +105,8 @@ Closing.
 it as `rsvpService` — no UI changes needed. Today submissions are stored per device (localStorage).
 
 ## Assets to supply
+
+Footer credit: `weddingData.credits`.
 
 Placeholder images (labelled "placeholder") ship so everything works; replace them with real photos, same file names:
 

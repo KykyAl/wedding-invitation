@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { asset } from "../../utils/asset";
 
 interface LightboxProps {
   photos: readonly string[];
@@ -67,7 +68,7 @@ export function Lightbox({ photos, index, onClose, onChange }: LightboxProps) {
         <div className="flex size-full flex-col items-center justify-center gap-5 p-4 md:p-10" onClick={(e) => e.target === e.currentTarget && dialog.current?.close()}>
           <img
             key={photos[index]}
-            src={photos[index]}
+            src={asset(photos[index])}
             alt={`Foto ${index + 1} dari ${photos.length}`}
             className="max-h-[80dvh] max-w-full object-contain shadow-[0_40px_120px_rgba(0,0,0,0.6)]"
             style={{ animation: "tick 0.6s var(--ease-out-soft)" }}

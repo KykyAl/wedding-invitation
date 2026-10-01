@@ -11,7 +11,7 @@ interface ClosingSectionProps {
 /** Scene 10 — the camera rises into the dusk; a last word from the couple and their families. */
 export function ClosingSection({ reducedMotion }: ClosingSectionProps) {
   const section = useRef<HTMLElement>(null);
-  const { closing, groom, bride, hashtag } = weddingData;
+  const { closing, groom, bride, hashtag, credits } = weddingData;
   const [gi, bi] = coupleInitials();
   useReveal(section, reducedMotion);
 
@@ -60,8 +60,21 @@ export function ClosingSection({ reducedMotion }: ClosingSectionProps) {
         </p>
       </div>
 
-      <footer className="relative mt-24 text-[0.625rem] tracking-[0.3em] text-champagne/50 uppercase">
-        {groom.nickname} &amp; {bride.nickname} · {new Date(weddingData.dateTime).getFullYear()}
+      <footer className="relative mt-24 flex flex-col items-center gap-2 text-[0.625rem] tracking-[0.3em] text-champagne/55 uppercase">
+        <span>
+          {groom.nickname} &amp; {bride.nickname} · {new Date(weddingData.dateTime).getFullYear()}
+        </span>
+        <span className="tracking-[0.22em] normal-case">
+          {credits.label}{" "}
+          <a
+            href={credits.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold-light/80 underline decoration-gold-light/30 underline-offset-4 transition-colors hover:text-gold-light hover:decoration-gold-light"
+          >
+            {credits.name}
+          </a>
+        </span>
       </footer>
     </section>
   );

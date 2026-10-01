@@ -148,6 +148,39 @@ export const weddingData = {
     enabled: true,
   },
 
+  /** Shown in the footer of the closing scene. */
+  credits: {
+    label: "Undangan digital oleh",
+    name: "KykyAl",
+    url: "https://github.com/KykyAl",
+  },
+
+  /**
+   * WhatsApp message used by the guest-link tool (/share.html).
+   * Placeholders: {nama} {link} {mempelai} {tanggal} {lokasi}
+   */
+  share: {
+    message: `Assalamu'alaikum Warahmatullahi Wabarakatuh
+
+Kepada Yth.
+Bapak/Ibu/Saudara/i *{nama}*
+
+Tanpa mengurangi rasa hormat, perkenankan kami mengundang Anda untuk hadir di acara pernikahan kami:
+
+*{mempelai}*
+🗓 {tanggal}
+📍 {lokasi}
+
+Info lengkap acara, lokasi, dan konfirmasi kehadiran:
+{link}
+
+Merupakan suatu kebahagiaan bagi kami apabila Anda berkenan hadir dan memberikan doa restu.
+
+Wassalamu'alaikum Warahmatullahi Wabarakatuh
+Kami yang berbahagia,
+{mempelai}`,
+  },
+
   meta: {
     description: "Together with our families, we invite you to celebrate the beginning of our forever.",
     ogImage: "/assets/og/wedding-preview.jpg",

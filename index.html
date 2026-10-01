@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#0C0907" />
+    <!-- A private invitation: shareable by link, but kept out of search engines. -->
+    <meta name="robots" content="noindex, nofollow" />
     <title>%WEDDING_TITLE%</title>
     <meta name="description" content="%WEDDING_DESCRIPTION%" />
 
     <!-- Open Graph / WhatsApp preview — values injected from src/data/wedding.ts (see vite.config.ts). -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="%WEDDING_URL%" />
+    <meta property="og:site_name" content="%WEDDING_TITLE%" />
     <meta property="og:title" content="%WEDDING_TITLE%" />
     <meta property="og:description" content="%WEDDING_DESCRIPTION%" />
     <meta property="og:image" content="%WEDDING_OG_IMAGE%" />

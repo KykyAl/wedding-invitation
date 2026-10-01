@@ -3,6 +3,7 @@ import { SectionHeading } from "../../components/ui/SectionHeading";
 import { weddingData } from "../../data/wedding";
 import { useReveal } from "../../hooks/useReveal";
 import { gsap } from "../../lib/gsap";
+import { asset } from "../../utils/asset";
 
 interface CoupleSectionProps {
   reducedMotion: boolean;
@@ -18,7 +19,7 @@ function Portrait({ person, side }: { person: Person; side: "groom" | "bride" })
         <div className="absolute -inset-2.5 rounded-t-full border border-gold-deep/45" aria-hidden="true" />
         <div className="relative aspect-[3/4] overflow-hidden rounded-t-full bg-champagne shadow-[0_40px_80px_-40px_rgba(30,22,16,0.6)]">
           <img
-            src={person.photo}
+            src={asset(person.photo)}
             alt={`Foto ${person.fullName}`}
             loading="lazy"
             decoding="async"

@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react";
 import { gsap } from "../lib/gsap";
 import { weddingData } from "../data/wedding";
+import { asset } from "../utils/asset";
 
 /**
  * Background music controller. Muted by default; never autoplays without a gesture.
@@ -38,7 +39,7 @@ function writePreference(on: boolean) {
 
 function getAudio(): HTMLAudioElement {
   if (!audio) {
-    audio = new Audio(weddingData.music.url);
+    audio = new Audio(asset(weddingData.music.url));
     audio.loop = true;
     audio.preload = "none";
     audio.volume = 0;
